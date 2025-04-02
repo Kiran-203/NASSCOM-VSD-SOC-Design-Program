@@ -43,5 +43,19 @@ Once OpenLane is set up, synthesis can be run using:
 run_synthesis
 ```
 
-These steps must be followed each time OpenLane is launched to work on the `picorv32a` design.
+we see this once the synthesis is run properly.
+![image](https://github.com/user-attachments/assets/daac4b54-1f9e-49f9-b277-a6c8808e5d0d)
+
+the reports and results will be present in the following directaries. these dicrectories will be populated as the run progresses.
+reports:
+![image](https://github.com/user-attachments/assets/9bac6b7d-e37f-439a-af79-fe07e9f8ae9b)
+
+results:
+![image](https://github.com/user-attachments/assets/9a5329b5-b7fb-45ca-bee8-8ef2761d3cf4)
+
+Task: to calculate the DFF ratio
+checking for latest file we have reports/synthesis/1-yosys_4.stat.rpt from dir image above. Therefore Flip Flop ratio is:
+we can also analyse the sta reports along with the yosys usage summary
+
+
 
