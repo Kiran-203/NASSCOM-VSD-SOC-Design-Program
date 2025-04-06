@@ -1,8 +1,8 @@
 # NASSCOM-VSD-SOC-Design-Program
 
-## Open-Source RTL to GDSII Implementation using OpenLane
+#### Open-Source RTL to GDSII Implementation using OpenLane
 
-### Sky130 Day 1 - Introduction to Open-Source EDA, OpenLANE, and Sky130 PDK
+## Sky130 Day 1 - Introduction to Open-Source EDA, OpenLANE, and Sky130 PDK
 
 ### Lab: SKY130_D1_SK3 - Getting Familiar with Open-Source EDA Tools
 
@@ -64,26 +64,29 @@ checking for latest file we have reports/synthesis/1-yosys_4.stat.rpt from dir i
 
 we can also analyse the sta reports which are generated after this step.
 
-### Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+
+
+
+## Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
 
 A concise overview of the theory and process involved in floorplanning during the RTL-to-GDSII flow of a VLSI chip design.
 
 
 
-## Floorplanning:
+#### Floorplanning:
 
 Floorplanning is an important step in the physical design flow where the positions of blocks (standard cells, macros, and IPs) are determined within the core area of the die. An optimized floorplan improves performance, reduces area and power, and avoids congestion.
 
 
 
-## Core vs. Die
+##### Core vs. Die
 
 - **Die**: The complete silicon chip area.
 - **Core**: The central area inside the die where logic is placed. The region between the die boundary and core is used for routing and I/O cells.
 
 
 
-## Utilization Factor
+##### Utilization Factor
 
 The utilization factor determines how much of the core area is filled with standard cells:
 ```
@@ -95,7 +98,7 @@ Utilization = Area of Standard Cells / Total Core Area
 
 
 
-## Aspect Ratio
+##### Aspect Ratio
 
 Aspect Ratio is defined as:
 ```
@@ -106,13 +109,13 @@ Aspect Ratio = Height / Width of the core
 
 
 
-## Pre-Placed Cells
+##### Pre-Placed Cells
 
 Certain blocks like memories or analog IPs are manually positioned before running automated placement tools. These are called **pre-placed cells** and help optimize the performance and integration of critical blocks.
 
 
 
-## Decoupling Capacitors (Decaps)
+##### Decoupling Capacitors (Decaps)
 
 When logic switches from '0' to '1', it needs charge from the power supply. But due to resistance in wires, there can be voltage drops. If the drop is greater than the noise margin, switching fails.
 
@@ -120,7 +123,7 @@ When logic switches from '0' to '1', it needs charge from the power supply. But 
 
 
 
-## Power Planning
+##### Power Planning
 
 Power planning ensures efficient and stable power distribution through:
 - Power rings
@@ -131,7 +134,7 @@ This is vital to prevent IR drop and to ensure all parts of the chip receive ade
 
 
 
-## Pin Placement
+##### Pin Placement
 
 Pins are placed between the die and core boundary. Key points:
 - Located close to the logic blocks they interact with
@@ -139,11 +142,11 @@ Pins are placed between the die and core boundary. Key points:
 
 
 
-## Logical Cell Placement Blockage
+##### Logical Cell Placement Blockage
 
 Certain regions like pin placement areas are blocked from automated cell placement. This avoids congestion and ensures reliable routing.
 
-### Lab: SKY130_D2_SK1 - Chip FLoor planning consideration
+#### Lab: SKY130_D2_SK1 - Chip FLoor planning consideration
 ```sh
    run_floorplan
    ```
@@ -186,7 +189,7 @@ now  open the tkcon window and type what and youll see the information of the se
 
 ![image](https://github.com/user-attachments/assets/552bec5a-337e-4c50-b7be-cfa8d1b3ba9e)
 
-##Placement
+##### Placement
 
 In OpenLane tehre are two placement stages,
 1. Global Placement
@@ -207,6 +210,13 @@ To see how placement is done,
 
 
 ![image](https://github.com/user-attachments/assets/1e064d9f-9977-4b04-b788-eb2569f46b1b)
+
+##### Cell Design FLow
+![image](https://github.com/user-attachments/assets/198a1e26-62ce-44b7-8450-c1be8535012d)
+
+
+## Sky130 Day 3 -  Design library cell using Magic Layout and ngspice characterization
+
 
 
 
