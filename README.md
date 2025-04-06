@@ -171,6 +171,44 @@ Die Area (in microns²) = (660.685 × 671.405) = 443,587.21 microns²
 
 This calculated area helps guide decisions around placement, routing, and chip scaling.
 
+#command to load picorv32a.placement.def file in magic
+```sh
+   magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read tmp/merged.lef def read results/floorplan/picorv32a.floorplan.def &
+   ```
+
+![image](https://github.com/user-attachments/assets/6eb0c289-18ea-4930-8c4f-387eaeadab71)
+
+to zoom in: first left click on the area of interest , here we'll go near io pins. and then right click creating a box and click z to zoom.
+
+as you zoom in, hover the mouse on a io pin and click s, it'll select that pin.
+now  open the tkcon window and type what and youll see the information of the selected pin as shown below
+
+
+![image](https://github.com/user-attachments/assets/552bec5a-337e-4c50-b7be-cfa8d1b3ba9e)
+
+##Placement
+
+In OpenLane tehre are two placement stages,
+1. Global Placement
+2. Detailed Placement
+
+```sh
+   run_placement
+   ```
+
+![image](https://github.com/user-attachments/assets/4d2bca93-0a59-4e4c-ae86-02f63ef0de2e)
+
+To see how placement is done,
+```sh
+   magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read tmp/merged.lef def read results/placement/picorv32a.placement.def &
+   ```
+
+![image](https://github.com/user-attachments/assets/0eee7f48-2297-42fc-af44-8eb368ea7864)
+
+![image](https://github.com/user-attachments/assets/1e064d9f-9977-4b04-b788-eb2569f46b1b)
+
+
+
 
 
 
