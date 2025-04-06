@@ -217,9 +217,45 @@ To see how placement is done,
 
 ## Sky130 Day 3 -  Design library cell using Magic Layout and ngspice characterization
 
+we have to clone the inverter standard cell design from the github reposotory
+
+```sh
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Clone the repository with custom inverter design
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+# Change into repository directory
+cd vsdstdcelldesign
+
+# Copy magic tech file to the repo directory for easy access
+cp ../../pdks/sky130A/libs.tech/magic/sky130A.tech ./
+
+# Check contents whether everything is present
+ls
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
+![image](https://github.com/user-attachments/assets/c8b235d0-e4d8-485e-b27c-2de80ab6c19b)
 
 
+![image](https://github.com/user-attachments/assets/7f2c69d1-e012-4f90-9a79-a53dbdd7480d)
 
+![image](https://github.com/user-attachments/assets/9e4ee921-a7a7-4056-85d2-eab191ce1c6c)
+
+Spice extraction of inverter in magic.
+```sh
+# Extraction command to extract to .ext format
+extract all
+ext2spice cthresh 0 rthresh 0
+# Converting to ext to spice
+ext2spice
+```
+![image](https://github.com/user-attachments/assets/746e4013-4eeb-49eb-ae23-66a4a495a885)
+
+![image](https://github.com/user-attachments/assets/338d61c5-7160-4e45-8b4a-d2f76ee61cc3)
 
 
 
