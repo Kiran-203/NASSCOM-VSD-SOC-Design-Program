@@ -205,6 +205,7 @@ To see how placement is done,
 
 ![image](https://github.com/user-attachments/assets/0eee7f48-2297-42fc-af44-8eb368ea7864)
 
+
 ![image](https://github.com/user-attachments/assets/1e064d9f-9977-4b04-b788-eb2569f46b1b)
 
 
