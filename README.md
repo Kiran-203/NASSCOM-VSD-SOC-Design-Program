@@ -55,7 +55,123 @@ results:
 
 Task: to calculate the DFF ratio
 checking for latest file we have reports/synthesis/1-yosys_4.stat.rpt from dir image above. Therefore Flip Flop ratio is:
-we can also analyse the sta reports along with the yosys usage summary
+
+![image](https://github.com/user-attachments/assets/00355ed0-b5ed-48f8-8598-a4e20756d58b)
+
+(1623/14876) *100 = 10.84
+
+![image](https://github.com/user-attachments/assets/c30e2dcf-6e65-43b2-b54b-b0d9451069ef)
+
+we can also analyse the sta reports which are generated after this step.
+
+### Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+
+A concise overview of the theory and process involved in floorplanning during the RTL-to-GDSII flow of a VLSI chip design.
+
+
+
+## Floorplanning:
+
+Floorplanning is an important step in the physical design flow where the positions of blocks (standard cells, macros, and IPs) are determined within the core area of the die. An optimized floorplan improves performance, reduces area and power, and avoids congestion.
+
+
+
+## Core vs. Die
+
+- **Die**: The complete silicon chip area.
+- **Core**: The central area inside the die where logic is placed. The region between the die boundary and core is used for routing and I/O cells.
+
+
+
+## Utilization Factor
+
+The utilization factor determines how much of the core area is filled with standard cells:
+```
+Utilization = Area of Standard Cells / Total Core Area
+```
+
+- High utilization: Smaller area, possible congestion.
+- Low utilization: Easier routing, but wasted space.
+
+
+
+## Aspect Ratio
+
+Aspect Ratio is defined as:
+```
+Aspect Ratio = Height / Width of the core
+```
+
+- Ideal value is close to 1 (square) for uniform routing and predictable performance.
+
+
+
+## Pre-Placed Cells
+
+Certain blocks like memories or analog IPs are manually positioned before running automated placement tools. These are called **pre-placed cells** and help optimize the performance and integration of critical blocks.
+
+
+
+## Decoupling Capacitors (Decaps)
+
+When logic switches from '0' to '1', it needs charge from the power supply. But due to resistance in wires, there can be voltage drops. If the drop is greater than the noise margin, switching fails.
+
+**Solution**: Place decoupling capacitors near sub-blocks. These act as local charge reservoirs and stabilize the power supply.
+
+
+
+## Power Planning
+
+Power planning ensures efficient and stable power distribution through:
+- Power rings
+- Power stripes
+- Mesh/grid networks
+
+This is vital to prevent IR drop and to ensure all parts of the chip receive adequate power.
+
+
+
+## Pin Placement
+
+Pins are placed between the die and core boundary. Key points:
+- Located close to the logic blocks they interact with
+- Clock pins are wider to offer low-resistance paths and minimize delay
+
+
+
+## Logical Cell Placement Blockage
+
+Certain regions like pin placement areas are blocked from automated cell placement. This avoids congestion and ensures reliable routing.
+
+### Lab: SKY130_D2_SK1 - Chip FLoor planning consideration
+```sh
+   run_floorplan
+   ```
+
+![image](https://github.com/user-attachments/assets/0d09e8fa-6454-455a-b1c3-72346118734b)
+
+results:
+![image](https://github.com/user-attachments/assets/778bd31c-6f6c-463a-a871-138b4168d405)
+
+![image](https://github.com/user-attachments/assets/207d0ada-b660-4904-bfe2-29d1cb5f339a)
+
+picorv32a def file:
+
+![image](https://github.com/user-attachments/assets/30a5c0f9-8854-4dc8-91d0-219406ec92d5)
+
+According to the def file:
+
+Unit Distance = 1 Micron
+
+Width (in unit distance)  = 660685 - 0 = 660685
+
+Height (in unit distance) = 671405 - 0 = 671405
+
+Die Area (in microns²) = (660.685 × 671.405) = 443,587.21 microns²
+
+This calculated area helps guide decisions around placement, routing, and chip scaling.
+
+
 
 
 
