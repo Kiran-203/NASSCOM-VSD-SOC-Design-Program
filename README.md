@@ -257,6 +257,27 @@ ext2spice
 
 ![image](https://github.com/user-attachments/assets/338d61c5-7160-4e45-8b4a-d2f76ee61cc3)
 
+oprn the spice file
 
+![image](https://github.com/user-attachments/assets/a5261001-e46f-4f44-b014-04f7fb60822a)
 
+Edit the spice file
+
+run the command
+```sh
+ngspice sky130_inv.spice
+```
+![image](https://github.com/user-attachments/assets/1635a2d3-8016-4771-8996-4975ce4c78e1)
+
+use this command to see the plot of output vs input
+```sh
+plot y vs time a
+```
+
+![image](https://github.com/user-attachments/assets/149eb352-6f64-4305-adbe-f1279b7b6db7)
+
+###### Rise time calculation
+![image](https://github.com/user-attachments/assets/5b2cdd69-8694-4bed-99aa-932e96966abc)
+
+Rise transition time=2.24577−2.18214=0.06363 ns=63.63 ps
 
