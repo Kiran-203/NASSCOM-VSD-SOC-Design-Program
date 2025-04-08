@@ -350,42 +350,95 @@ magic -d XR
 ## Sky 130 Day4 - Pre-layout timing analysis and importance of good clock tree
 
 
-extract a leg file from the magic
+tracks file
 
 ![image](https://github.com/user-attachments/assets/18077c00-dd4d-4ce6-8e99-5d6d7bd16d6b)
 
 
 ![image](https://github.com/user-attachments/assets/ab4bac6b-af48-4a74-838b-c8b26ebd1c7c)
 
-###### 1st requirement: 
+###### checking all the requirements of the layout: 
 
+
+Commands to open the custom inverter layout
+```sh
+# Change directory to vsdstdcelldesign
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
 ![image](https://github.com/user-attachments/assets/9df7bc20-3bd9-47f3-9ce4-7fef1ff4417c)
 
 
 ![image](https://github.com/user-attachments/assets/04b70e6c-5b97-4702-b555-e19f90762e45)
 
-###### extract lef
-save the lef
 
 ![image](https://github.com/user-attachments/assets/4dc66a68-dcde-4d75-9844-c63a34869bbf)
 
-![image](https://github.com/user-attachments/assets/edfe9b63-0249-4a52-ba2d-56789eeb0e2d)
+```sh
+#to write lef file
+lef write
+```
+
 
 ![image](https://github.com/user-attachments/assets/f9ffbb69-069e-4054-b296-99fc11f6a71a)
 
 ![image](https://github.com/user-attachments/assets/cd611484-4b4f-4653-ab08-ced8ab3d9bdc)
 
+open lef file
+
 ![image](https://github.com/user-attachments/assets/a1889d8a-1bf6-400b-9495-32ab40aa4223)
 
 ![image](https://github.com/user-attachments/assets/83ef35a9-eb7e-4a1f-b0a9-a6b036266fbd)
 
+```sh
+# Copy lef file
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# List and check whether it's copied
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# Copy lib files
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# List and check whether it's copied
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+editing the config.tcl file
+
 ![image](https://github.com/user-attachments/assets/f24e7681-adaf-4bbb-8e37-76a357d43685)
+
+
+Run openlane flow synthesis with newly inserted custom inverter cell.
+```sh
+# Open the openlane terminal
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+docker
+
+./flow.tcl -interactive
+
+# Inside openlane terminal
+
+# below cmd to be used to overwrite previous run data 
+prep -design picorv32a -tag 06-04_20-28 -overwrite 
+
+# Cmds to include the new cell led in merged.lef in /tm[ folder
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+run_synthesis
+```
 
 ![image](https://github.com/user-attachments/assets/93713bfa-2616-478f-8402-5ee8dbd68aef)
 
 ![image](https://github.com/user-attachments/assets/ab299674-68c3-4d5d-8442-56f24a562a58)
 
+
+the timing report shows that the slack has not been met meaning theres timing violation
 ![image](https://github.com/user-attachments/assets/8fa36eab-e40a-4c48-a7a2-39bfa7ee539d)
+
 
 
 
